@@ -1,0 +1,36 @@
+CREATE DATABASE EMPLEADOBD
+GO
+
+USE EMPLEADOBD
+GO
+
+CREATE TABLE PERSONA (
+IDPERSONA INT IDENTITY (1,1) NOT NULL,
+NOMBRE NVARCHAR (50) NOT NULL,
+APELLIDO NVARCHAR (50) NOT NULL,
+ESTADO NVARCHAR (50) NOT NULL,
+PRIMARY KEY (IDPERSONA))
+GO
+
+CREATE TABLE EMPLEADO (
+IDEMPLEADO INT IDENTITY (1,1) NOT NULL,
+IDPERSONA INT NOT NULL,
+PUESTO NVARCHAR (50) NOT NULL,
+SALARIO MONEY NOT NULL,
+FECHADECONTRATACION DATETIME NOT NULL,
+PRIMARY KEY (IDEMPLEADO),
+FOREIGN KEY (IDPERSONA) REFERENCES PERSONA (IDPERSONA))
+GO
+
+insert into PERSONA values('Juan Manuel','Chorolque','ACTIVO');
+insert into PERSONA values('Cristiano Ronaldo','Dos Santos','ACTIVO');
+insert into PERSONA values('Andres','Iniesta','ACTIVO');
+insert into PERSONA values('Daniel','Condori','ACTIVO');
+insert into PERSONA values('Juancito','Pinto','ACTIVO');
+
+
+insert into EMPLEADO values(1,'Jefe de Construccion',2000,'2022-10-10 12:50:00');
+insert into EMPLEADO values(2,'Jefe de Maquinaria',3000,'2022-11-10 12:50:00');
+insert into EMPLEADO values(3,'Obrero',1000,'2023-01-10 12:50:00');
+insert into EMPLEADO values(4,'Obrero',1000,'2023-02-15 12:50:00');
+insert into EMPLEADO values(5,'Supervisor de Empleados',3000,'2023-10-10 12:50:00');
